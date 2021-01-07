@@ -16,6 +16,47 @@ pd.read_csv(
 
 ## R
 
+### datetime
+
+https://www.366service.com/jp/qa/5e202ba289cb909aa2158444e8bb4d64
+https://qiita.com/nozma/items/4aea36022ce18a6aa5ca
+
+```
+with_locale
+```
+
+### ローケールについて
+
+https://qiita.com/nozma/items/4aea36022ce18a6aa5ca
+https://www.rdocumentation.org/packages/withr/versions/2.3.0/topics/with_locale
+```
+# NOT RUN {
+## Change locale for time:
+df <- data.frame(
+  stringsAsFactors = FALSE,
+  date = as.Date(c("2019-01-01", "2019-02-01")),
+  value = c(1, 2)
+)
+with_locale(new = c("LC_TIME" = "es_ES"), code = plot(df$date, df$value))
+## Compare with:
+#  plot(df$date, df$value)
+
+## Month names:
+with_locale(new = c("LC_TIME" = "en_GB"), format(ISOdate(2000, 1:12, 1), "%B"))
+with_locale(new = c("LC_TIME" = "es_ES"), format(ISOdate(2000, 1:12, 1), "%B"))
+
+## Change locale for currencies:
+with_locale(new = c("LC_MONETARY" = "it_IT"), Sys.localeconv())
+with_locale(new = c("LC_MONETARY" = "en_US"), Sys.localeconv())
+
+## Ordering:
+x <- c("bernard", "b<U+00E9>r<U+00E9>nice", "b<U+00E9>atrice", "boris")
+with_locale(c(LC_COLLATE = "fr_FR"), sort(x))
+with_locale(c(LC_COLLATE = "C"), sort(x))
+
+# }
+```
+
 ### dplyerのカラム名指定に文字列を使用する方法
 
 参考: [https://qiita.com/ocean_f/items/d1ceba28cc714936e640](文字列で列名を指定してmutate ＆ aesを文字列で指定して繰り返しggplot)
