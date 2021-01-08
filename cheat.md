@@ -14,7 +14,46 @@ pd.read_csv(
 )
 ```
 
+### 全角半角の変換
+
+https://qiita.com/YuukiMiyoshi/items/6ce77bf402a29a99f1bf
+
+```python
+text = "！＂＃＄％＆＇（）＊＋，－．／０１２３４５６７８９：；＜＝＞？＠ＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸＹＺ［＼］＾＿｀>？＠ａｂｃｄｅｆｇｈｉｊｋｌｍｎｏｐｑｒｓｔｕｖｗｘｙｚ｛｜｝～"
+
+# 全角半角
+text.translate(str.maketrans({chr(0x0021 + i): chr(0xFF01 + i) for i in range(94)}))
+# 半角全角
+text.translate(str.maketrans({chr(0x0021 + i): chr(0xFF01 + i) for i in range(94)}))
+```
+
 ## R
+
+### excel読み込み
+
+```
+openxlsx::read.xlsx('file.xslx', sheet = 1)
+openxlsx::read.xlsx('file.xslx', sheet = 'sheet1')
+```
+
+`openxlsx`だと漢字の後に変なカタカナがついてくるときは`read_excel`
+戻り値は`tibble`
+
+```
+readxl::read_excel('file.xlsx', sheet = 1)
+readxl::read_excel('file.xlsx', sheet = 'sheet1')
+```
+
+### 全角半角の変換
+
+https://pediatricsurgery.hatenadiary.jp/entry/2017/10/12/105242
+
+全角アルファベットは半角に
+半角カタカナは全角に
+
+```
+strini::stri_trans_nfkc
+```
 
 ### 日付の文字列をDateオブジェクトに変換する
 
@@ -36,6 +75,15 @@ withr::with_locale(
   strptime("January 1, 2021, 9:00 am UTC", format = "%B %d, %Y, %I:%M %p UTC", tz = "UTC")
 )
 ```
+
+### JSTのタイムゾーンで時刻を読みこむ方法
+
+`tz = 'Japan'`を設定。
+
+```R
+strptime("1月 1, 2021, 9:00 午前", format = "%B %d, %Y, %I:%M %p", tz = "Japan")
+```
+
 
 ### ローケールについて
 
