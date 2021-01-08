@@ -1,6 +1,4 @@
-# cheat sheet
-
-## python
+# Python cheat sheet
 
 ### 日付カラム読み込み
 
@@ -22,7 +20,7 @@ https://qiita.com/YuukiMiyoshi/items/6ce77bf402a29a99f1bf
 text = "！＂＃＄％＆＇（）＊＋，－．／０１２３４５６７８９：；＜＝＞？＠ＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸＹＺ［＼］＾＿｀>？＠ａｂｃｄｅｆｇｈｉｊｋｌｍｎｏｐｑｒｓｔｕｖｗｘｙｚ｛｜｝～"
 
 # 全角半角
-text.translate(str.maketrans({chr(0x0021 + i): chr(0xFF01 + i) for i in range(94)}))
+text.translate(str.maketrans({chr(0xFF01 + i): chr(0x0021 + i) for i in range(94)}))
 # 半角全角
 text.translate(str.maketrans({chr(0x0021 + i): chr(0xFF01 + i) for i in range(94)}))
 ```
