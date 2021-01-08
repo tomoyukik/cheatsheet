@@ -2,7 +2,7 @@
 
 ### excel読み込み
 
-```
+```R
 openxlsx::read.xlsx('file.xslx', sheet = 1)
 openxlsx::read.xlsx('file.xslx', sheet = 'sheet1')
 ```
@@ -10,7 +10,7 @@ openxlsx::read.xlsx('file.xslx', sheet = 'sheet1')
 `openxlsx`だと漢字の後に変なカタカナがついてくるときは`read_excel`
 戻り値は`tibble`
 
-```
+```R
 readxl::read_excel('file.xlsx', sheet = 1)
 readxl::read_excel('file.xlsx', sheet = 'sheet1')
 ```
@@ -19,11 +19,11 @@ readxl::read_excel('file.xlsx', sheet = 'sheet1')
 
 https://pediatricsurgery.hatenadiary.jp/entry/2017/10/12/105242
 
-全角アルファベットは半角に
-半角カタカナは全角に
+全角アルファベットは半角に、
+半角カタカナは全角に変換。
 
-```
-strini::stri_trans_nfkc
+```R
+stringi::stri_trans_nfkc('string')
 ```
 
 ### 日付の文字列をDateオブジェクトに変換する
@@ -56,11 +56,12 @@ strptime("1月 1, 2021, 9:00 午前", format = "%B %d, %Y, %I:%M %p", tz = "Japa
 ```
 
 
-### ローケールについて
+### ロケールについて
 
 https://qiita.com/nozma/items/4aea36022ce18a6aa5ca
 https://www.rdocumentation.org/packages/withr/versions/2.3.0/topics/with_locale
-```
+
+```R
 # NOT RUN {
 ## Change locale for time:
 df <- data.frame(
@@ -90,7 +91,7 @@ with_locale(c(LC_COLLATE = "C"), sort(x))
 
 ### dplyerのカラム名指定に文字列を使用する方法
 
-参考: [https://qiita.com/ocean_f/items/d1ceba28cc714936e640](文字列で列名を指定してmutate ＆ aesを文字列で指定して繰り返しggplot)
+参考: [文字列で列名を指定してmutate ＆ aesを文字列で指定して繰り返しggplot](https://qiita.com/ocean_f/items/d1ceba28cc714936e640)]
 
 ```R
 colname = 'column_name_string'
@@ -103,11 +104,10 @@ df %>%
 
 ### ベクトライズされてない関数をdplyrで使う
 
-参考: [http://yoshidk6.hatenablog.com/entry/2018/08/06/154117A](dplyr::mutate内でベクトル化されていない関数を使う)
-
+参考: [dplyr::mutate内でベクトル化されていない関数を使う](http://yoshidk6.hatenablog.com/entry/2018/08/06/154117A)
 pmapを使う。pmapの戻り値はlistなのでunnestでlist解消。
 
-```
+```R
 df %>%
   mutate(
     col = pmap(list(arg), ~ func(.))
@@ -117,7 +117,7 @@ df %>%
 
 ### mutateで変更するカラム名を`starts_with`で指定する
 
-```
+```R
 df %>%
   mutate_at(
     vars(starts_with('prefix_')), . == 'abc' # `.`は`vars(starts_with('prefix_'))`で得られるカラム
@@ -128,7 +128,7 @@ df %>%
 
 #### 特定の値で置き換え
 
-```
+```R
 df %>%
   mutate(
     col = replace_na(col, 0)
@@ -137,7 +137,7 @@ df %>%
 
 #### 別の列の値で置き換え
 
-```
+```R
 df %>%
   mutate(
     col = ifelse(is.na(col), another_col, col)
@@ -146,6 +146,6 @@ df %>%
 
 ### Rのラムダ式
 
-```
+```R
 ~ func(.)
 ```
