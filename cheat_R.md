@@ -58,8 +58,8 @@ strptime("1月 1, 2021, 9:00 午前", format = "%B %d, %Y, %I:%M %p", tz = "Japa
 
 ### ロケールについて
 
-https://qiita.com/nozma/items/4aea36022ce18a6aa5ca
-https://www.rdocumentation.org/packages/withr/versions/2.3.0/topics/with_locale
+- https://qiita.com/nozma/items/4aea36022ce18a6aa5ca
+- https://www.rdocumentation.org/packages/withr/versions/2.3.0/topics/with_locale
 
 ```R
 # NOT RUN {
@@ -91,7 +91,7 @@ with_locale(c(LC_COLLATE = "C"), sort(x))
 
 ### dplyerのカラム名指定に文字列を使用する方法
 
-参考: [文字列で列名を指定してmutate ＆ aesを文字列で指定して繰り返しggplot](https://qiita.com/ocean_f/items/d1ceba28cc714936e640)]
+参考: [文字列で列名を指定してmutate ＆ aesを文字列で指定して繰り返しggplot](https://qiita.com/ocean_f/items/d1ceba28cc714936e640)
 
 ```R
 colname = 'column_name_string'
