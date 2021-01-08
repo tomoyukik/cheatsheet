@@ -16,13 +16,25 @@ pd.read_csv(
 
 ## R
 
-### datetime
+### 日付の文字列をDateオブジェクトに変換する
 
-https://www.366service.com/jp/qa/5e202ba289cb909aa2158444e8bb4d64
-https://qiita.com/nozma/items/4aea36022ce18a6aa5ca
+参考
+- https://www.366service.com/jp/qa/5e202ba289cb909aa2158444e8bb4d64
+- https://qiita.com/nozma/items/4aea36022ce18a6aa5ca
+- https://www.javadrive.jp/ruby/date_class/index5.html
 
-```
-with_locale
+Rではロケールに依存するので`with_locale`でロケールを合わせる必要がある。
+タイムゾーン`"%Z"`は`strptime`ではサポートされてない。
+
+```R
+# 日本語
+strptime("1月 1, 2021, 9:00 午前", format = "%B %d, %Y, %I:%M %p")
+
+# 英語
+withr::with_locale(
+  new = c("LC_TIME" = "C"),
+  strptime("January 1, 2021, 9:00 am UTC", format = "%B %d, %Y, %I:%M %p UTC", tz = "UTC")
+)
 ```
 
 ### ローケールについて
