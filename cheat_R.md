@@ -1,5 +1,15 @@
 # R cheat sheet
 
+### unionと同じことをする
+
+`rbind`ではなく`bind_row`を使う。
+
+`rbind`では列数が同一である必要がある。
+
+```
+bind_row(df1, df2)
+```
+
 ### excel読み込み
 
 ```R
@@ -105,6 +115,7 @@ df %>%
 ### ベクトライズされてない関数をdplyrで使う
 
 参考: [dplyr::mutate内でベクトル化されていない関数を使う](http://yoshidk6.hatenablog.com/entry/2018/08/06/154117A)
+
 pmapを使う。pmapの戻り値はlistなのでunnestでlist解消。
 
 ```R
