@@ -31,3 +31,9 @@ text.translate(str.maketrans({chr(0x0021 + i): chr(0xFF01 + i) for i in range(94
 
 VSCodeのpython拡張をインストールして、`# %%`を打ち込むとセルを区切ってJupyter的な環境が実現できる。
 
+
+### pandas::queryの列名に空白含むとき
+
+```python
+df.query("`column with space` == 1")
+```
