@@ -30,3 +30,9 @@ automatically to avoid repeatedly performing an expensive unshallow operation in
 CI systems (which should instead be fixed to not use shallow clones). Sorry for
 the inconvenience!
 ```
+
+### 直前のディレクトリに移動
+
+```
+cd -
+```
