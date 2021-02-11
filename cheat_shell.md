@@ -36,3 +36,9 @@ the inconvenience!
 ```
 cd -
 ```
+
+### treekの階層指定
+
+```
+tree -L 3
+```
