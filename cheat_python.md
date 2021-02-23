@@ -109,3 +109,8 @@ for i in range(until):
 ]
 ```
 みたいな形にして、2次元目についてスライスすればいい。
+
+## VSCodeのdetect kernel connection broken エラー
+
+consoleで実行したら`terminated by signal SIGSEGV (Address boundary error)`が出てきた
+timestampを含むnumpy.arrayをtorch.tensorに変更しようとしてたのが原因ぽい
