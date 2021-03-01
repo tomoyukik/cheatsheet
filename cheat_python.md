@@ -114,3 +114,7 @@ for i in range(until):
 
 consoleで実行したら`terminated by signal SIGSEGV (Address boundary error)`が出てきた
 timestampを含むnumpy.arrayをtorch.tensorに変更しようとしてたのが原因ぽい
+
+SIGSEGVは不正メモリアクセスらしい
+
+torch.Tensorじゃなくtorch.tensor使うと起きる場合があるかも
