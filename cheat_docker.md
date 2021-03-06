@@ -44,3 +44,10 @@ long syntax
 
 `./app.sock:/var/run/app.sock`(short syntax)で書くとディレクトリが作成されるけど、上記だとディレクトリがない場合にエラーが出る。
 空ディレクトリをマウントしたいときはshort syntaxでいいかもしれない。
+
+## `docker-compose`で`-it`オプション
+
+```yaml
+tty: true # -t
+stdin_open: true # -i
+```
