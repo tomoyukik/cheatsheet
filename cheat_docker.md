@@ -51,3 +51,13 @@ long syntax
 tty: true # -t
 stdin_open: true # -i
 ```
+
+## Dockerfile指定
+
+```Dockerfile
+build:
+    context: .
+    dockerfile: .
+    image: image_name
+    container_name: container_name
+```
