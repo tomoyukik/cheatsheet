@@ -70,4 +70,8 @@ cat /etc/issue
 hensu=$(date '+%D')
 ```
 
+### mac上のアプリの情報取得
 
+```
+/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/LaunchServices.framework/Versions/A/Support/lsregister -dump | grep -i "google chrome"
+```
