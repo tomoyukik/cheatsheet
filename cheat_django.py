@@ -293,3 +293,27 @@ python manage.py makemigrations --empty
 ### bootstrap使い方
 
 https://github.com/zostera/django-bootstrap4
+
+```
+pip install django-bootstrap4
+```
+
+```
+INSTALLED_APPS = {
+    "bootstrap4",
+}
+```
+
+```
+{% load bootstrap4 %}
+
+{# Display a form #}
+
+<form action="/url/to/submit/" method="post" class="form">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    {% buttons %}
+        <button type="submit" class="btn btn-primary">Submit</button>
+    {% endbuttons %}
+</form>
+```
