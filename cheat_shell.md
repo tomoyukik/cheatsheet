@@ -75,3 +75,11 @@ hensu=$(date '+%D')
 ```
 /System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/LaunchServices.framework/Versions/A/Support/lsregister -dump | grep -i "google chrome"
 ```
+
+### SSHでポート指定する
+
+```
+ssh -p 22 root@localhost
+```
+
+`ssh root@localhost:22`ではないので注意
