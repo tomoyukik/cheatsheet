@@ -118,3 +118,21 @@ timestampを含むnumpy.arrayをtorch.tensorに変更しようとしてたのが
 SIGSEGVは不正メモリアクセスらしい
 
 torch.Tensorじゃなくtorch.tensor使うと起きる場合があるかも
+
+## pythonのcpの対応バージョンを調べる
+
+バージョン次第
+
+- `from pip._internal.pep425tags import get_supported`
+- `from pip.pep425tags import get_supported`
+
+## コードの定義取得
+
+https://docs.python.org/ja/3/library/inspect.html
+
+```
+import inspect
+import os
+
+print(inspect.getsource(os.path.abspath))
+```
