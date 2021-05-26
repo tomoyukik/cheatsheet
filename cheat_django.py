@@ -282,6 +282,17 @@ urlpatterns = [
 ]
 ```
 
+```views.py
+from django.views import generic
+
+class IndexView(generic.ListView):
+    template_name = 'travel_costs/index.html'
+    context_object_name = 'this_months_route_list'
+
+    def get_queryset(self):
+        return Route.objects.all()
+```
+
 ### migration
 
 空のmigration
@@ -298,7 +309,7 @@ https://github.com/zostera/django-bootstrap4
 pip install django-bootstrap4
 ```
 
-```
+```myapp/settings.py
 INSTALLED_APPS = {
     "bootstrap4",
 }
@@ -306,6 +317,9 @@ INSTALLED_APPS = {
 
 ```
 {% load bootstrap4 %}
+
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
 
 {# Display a form #}
 
@@ -316,4 +330,39 @@ INSTALLED_APPS = {
         <button type="submit" class="btn btn-primary">Submit</button>
     {% endbuttons %}
 </form>
+```
+
+
+### cssでスタイル設定
+
+```polls/static/polls/style.css
+li a {
+    color: green;
+}
+```
+
+```polls/templates/polls/index.html
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
+```
+
+### check制約・テーブル制約
+
+https://stackoverflow.com/questions/2281179/adding-extra-constraints-into-fields-in-django
+
+`start_date < end_date`の制約
+
+```
+class Event(models.Model):
+    start_date = models.DatetimeField()
+    end_date = models.DatetimeField()
+
+    class Meta:
+        constraints = [
+            CheckConstraint(
+                check = Q(end_date__gt=F('start_date')),
+                name = 'check_start_date',
+            ),
+        ]
 ```
