@@ -8,4 +8,9 @@ x2 = 10
 plt.axvspan(x1, x2, color='red', alpha=0.2)
 ```
 
-###
+### 画像保存
+
+```
+plt.savefig('path/to/file.png', bbox_inches='tight')
+plt.clf() # plotを表示せずクリア
+```
