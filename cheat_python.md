@@ -136,3 +136,53 @@ import os
 
 print(inspect.getsource(os.path.abspath))
 ```
+
+## onehotのテーブルをカラム名で埋める
+
+`np.where`を使う
+
+```
+one_hot_columns = ['value1', 'value2', 'value3', 'value4']
+df['value'] = pd.Series(
+    df.columns[np.where(df[one_hot_columns] == 1)[1]]
+)
+```
+
+## 文字列からpythonオブジェクトにparse
+
+```
+import ast
+str_obj = "[{'a': 'apple', 'b': 'bible'}, {'a': 'ant', 'b': 'bee'}]"
+ast.literal_eval(str_obj)
+
+```
+
+## pillow image を pdf に挿入
+
+pdfrwとreportlabの両方が必要
+reportlabのみでは既存のpdfに書き込みできない
+
+```
+from pdfrw.buildxobj import pagexobj
+from pdfrw.toreportlab import makerl
+from reportlab.pdfgen import canvas
+from reportlab.lib.units import mm
+from PIL import Image
+
+pdf_path = 'pdf.pdffrom pdfrw import PdfReader
+save_path = 'save.pdf'
+
+cvs = canvas.Canvas(save_path)
+pdf = PdfReader(pdf_path, decompress=False).pages
+page = pagexobj(pdf[0])
+cvs.doForm(makerl(cvs, page)) # 既存pdfをキャンバスにする
+
+img = Image.open('image.png')
+img_reader = ImageReader(img)
+x = 160 # 左からの距離
+y = 700 # 下からの距離
+w = 13.5 * mm
+h = 13.5 * mm
+cvs.drawImage(img_reader, x, y, w, h, mask='auto') # maskの指定でpngの透過ができる
+cvs.save()
+```
