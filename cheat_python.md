@@ -186,3 +186,53 @@ h = 13.5 * mm
 cvs.drawImage(img_reader, x, y, w, h, mask='auto') # maskの指定でpngの透過ができる
 cvs.save()
 ```
+
+## package化してインストール
+
+http://lightgauge.net/language/python/8582/
+
+```
+package_root/
+ ├─ setup.py
+ ├─ module1/
+ │   ├─ __init__.py
+ │   ├─ module1.py
+ │   └─ module2.py
+ └─ module2/
+```
+
+```setup.py
+from setuptools import setup, find_packages
+
+setup(
+    name='package_name',
+    version="0.0.1",
+    description="description of package",
+    long_description="",
+    author='author name',
+    license='MIT',
+    classifiers=[
+        "Development Status :: 1 - Planning"
+    ],
+    packages=['module1', 'module2'] # ディレクトリ名列挙
+)
+```
+
+```__init__.py
+from .module1 import Class1
+from .module2 import Class2
+
+__all__ = ['Class1', 'Class2'] # class名列挙
+```
+
+### インストール
+
+```
+python setup.py develop
+```
+
+### アンインストール
+
+```
+python setup.py develop -u
+```
