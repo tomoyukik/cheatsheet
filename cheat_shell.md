@@ -101,3 +101,18 @@ ls | sed -n 's/\([0-9]\)\(.*\)/mv \0 00\1\2/p'
 ```
 ls | sed -n 's/\([0-9]\)\(.*\)/mv \0 00\1\2/p' | bash
 ```
+
+### shellの関数定義
+
+```
+function pipinstall() {
+    pip install $1 -i proxy
+}
+```
+
+```
+if ["${HOSTNAME}" = "hostname"]; then
+    some action
+fi
+```
+
