@@ -61,3 +61,9 @@ build:
     image: image_name
     container_name: container_name
 ```
+
+### fishでdocker container一括削除
+
+```
+docker rm (docker ps -a -q)
+```
