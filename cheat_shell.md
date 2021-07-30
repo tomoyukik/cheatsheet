@@ -116,3 +116,14 @@ if ["${HOSTNAME}" = "hostname"]; then
 fi
 ```
 
+### chromeのaliasを設定
+
+```
+alias chrome="'/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome'"
+```
+
+バージョン確認
+
+```
+chrome --version
+```
