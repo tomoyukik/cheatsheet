@@ -127,3 +127,17 @@ alias chrome="'/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome'"
 ```
 chrome --version
 ```
+
+### clipboad copy/paste
+
+copy
+
+```
+pwd | pbcopy
+```
+
+paste
+
+```
+pbpaste
+```
