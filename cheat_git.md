@@ -32,4 +32,27 @@ git archive HEAD --prefix=hogedir/ --output=hoge.zip
 
 HEADにはブランチ名とかtag nameとか
 
+## 開発者固有のignoreファイルの指定
+
+- https://qiita.com/anqooqie/items/110957797b3d5280c44f
+
+ユーザ固有の環境に依存するようなファイルは、プロジェクトの`.gitignore`ではなく、
+`~/.config/git/ignore`に記述する。
+
+`.DS_Store`や`Thumbs.db`など。
+
+#### `~/.config`とは
+
+- https://qiita.com/charon/items/74e49a0fd456e7257dbd
+
+XDG Base Directory仕様に則り、ソフトウェアが設定ファイルを置く場所。
+
+ユーザ固有の設定ファイルを置くために使用される。
+
+
+## プロジェクト依存かつignore設定を共有したくないファイルをignore
+
+- https://qiita.com/qurage/items/0333a210c151324064e8
+
+PJごとの`/.git/info/exclude`に記述
 
