@@ -12,7 +12,18 @@ CAの研修資料がわかりやすい
 
 - https://cybozu.github.io/introduction-to-kubernetes/introduction-to-kubernetes.html
 
-k8s dashboard
+### k8s有効化
+
+docker desktop の設定からk8sを有効化すると`kubectl`コマンドが使えるようになるが、
+`kubectl version`を実行したところ、以下のエラーが発生。
+```
+Client Version: version.Info{Major:"1", Minor:"21", GitVersion:"v1.21.3", GitCommit:"ca643a4d1f7bfe34773c74f79527be4afd95bf39", GitTreeState:"clean", BuildDate:"2021-07-15T20:58:09Z", GoVersion:"go1.16.5", Compiler:"gc", Platform:"darwin/amd64"}
+Server Version: version.Info{Major:"1", Minor:"19", GitVersion:"v1.19.7", GitCommit:"1dd5338295409edcfff11505e7bb246f0d325d15", GitTreeState:"clean", BuildDate:"2021-01-13T13:15:20Z", GoVersion:"go1.15.5", Compiler:"gc", Platform:"linux/amd64"}
+WARNING: version difference between client (1.21) and server (1.19) exceeds the supported minor version skew of +/-1
+```
+
+サーバとクライアントでバージョン齟齬が発生しているようだが、docker desktop のアップデートができなかったため、一度アンインストールして再インストール、再度k8sを有効化するとk8sのバージョンも上がっていた。
+(dockerのバージョンが`3.5`のリリース通知もあり、何度もアップデートして再起動したが、アップデートできなかったので、再インストールで対応した。)
 
 ## k8s dashboard
 
