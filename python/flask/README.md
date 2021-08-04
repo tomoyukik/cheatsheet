@@ -12,7 +12,7 @@ python main.py
 pytest -vv tests/test.py
 ```
 
-```shell
+```console
 /
 ├── README.md
 ├── expression
