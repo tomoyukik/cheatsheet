@@ -2,17 +2,17 @@
 
 ## 実行方法
 
-```
+```bash
 python main.py
 ```
 
 ## テスト方法
 
-```
+```bash
 pytest -vv tests/test.py
 ```
 
-```
+```shell
 /
 ├── README.md
 ├── expression
