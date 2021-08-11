@@ -236,3 +236,17 @@ python setup.py develop
 ```
 python setup.py develop -u
 ```
+
+### flaskのアプリケーションサーバについて
+
+- https://msiz07-flask-docs-ja.readthedocs.io/ja/latest/deploying/index.html
+- https://flask.palletsprojects.com/en/2.0.x/deploying/
+- https://medium.com/finatext/flask-life-to-understand-from-zero-re-9bf283ee5fae
+
+- werkzeug (ヴェルクツォイク)
+  - flaskがデフォルトで提供する簡易的なアプリケーションサーバ？
+- wsgi (ウィスギー)
+  - インターフェース
+
+flaskの組み込みサーバはスケーリングが得意でないため本番環境に向かない。
+セキュリティやパフォーマンスに影響するようだが詳細不明。
