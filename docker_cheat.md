@@ -67,3 +67,17 @@ build:
 ```
 docker rm (docker ps -a -q)
 ```
+
+## Dockerfileの配置
+
+```console
+root/
+├ .dockerignore
+└ docker/
+  ├ Dockerfile
+  └ docker-compose.yaml
+```
+
+上記構成でdocker-composeでbuild contextに`..`を指定すれば、
+ビルドコンテキストルートは`root`になるので`.dockerignore`が適用される。
+`Dockerfile`の中で`COPY . /app`とすれば、`.`は`root`の意味になる。
