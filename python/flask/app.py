@@ -1,9 +1,6 @@
 import flask
 from expression import Kazu
 
-import os
-print(os.getenv('FLASK_ENV'))
-
 CONFIGS = {
     'production': 'config.Config',
     'development': 'config.DevelopmentConfig',
@@ -28,6 +25,10 @@ def calc(exp):
 @app.route('/dic')
 def dic():
     return {'one': 1, 'two': 2}
+
+@app.route('/history/add')
+def add_history():
+    pass
 
 if __name__ == '__main__':
     app.run('127.0.0.1', port=3334, debug=True )
