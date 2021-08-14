@@ -30,5 +30,9 @@ def dic():
 def add_history():
     pass
 
+@app.route('work/<year>/<month>/<day>')
+def work(year, month, day):
+    return f'{year}-{month}-{day}'
+
 if __name__ == '__main__':
     app.run('127.0.0.1', port=3334, debug=True )
