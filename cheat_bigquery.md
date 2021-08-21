@@ -44,5 +44,5 @@ storage_client = bigquery_storage_v1beta1.BigQueryStorageClient()
 df_temp = client.query(query).to_dataframe(storage_client)
 ```
 
-- `bq ls dataset名``
+- `bq ls dataset名`
 - `bq query "SELECT column FROM table"`
