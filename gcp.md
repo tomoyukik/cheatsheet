@@ -25,3 +25,9 @@
     - <https://cloud.google.com/build/docs/configuring-builds/substitute-variable-values?hl=ja>
 - GKEへのデプロイ
     - <https://cloud.google.com/build/docs/deploying-builds/deploy-gke?hl=ja#yaml_1>
+    - <https://cloud.google.com/kubernetes-engine/docs/tutorials/gitops-cloud-build?hl=ja>
+        - マニフェストファイルの例あり
+
+- gitops style
+    - <https://cloud.google.com/kubernetes-engine/docs/tutorials/gitops-cloud-build>
+    - CDパイプラインの図とチュートリアル
