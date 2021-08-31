@@ -19,3 +19,9 @@
     - 定期実行など、トリガーでコンテナが起動できればいい場合は、Cloud RanかCloud Functionを検討すべき
 
 
+## cloud build
+
+- 置換変数
+    - <https://cloud.google.com/build/docs/configuring-builds/substitute-variable-values?hl=ja>
+- GKEへのデプロイ
+    - <https://cloud.google.com/build/docs/deploying-builds/deploy-gke?hl=ja#yaml_1>
