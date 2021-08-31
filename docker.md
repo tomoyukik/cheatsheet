@@ -81,3 +81,8 @@ root/
 上記構成でdocker-composeでbuild contextに`..`を指定すれば、
 ビルドコンテキストルートは`root`になるので`.dockerignore`が適用される。
 `Dockerfile`の中で`COPY . /app`とすれば、`.`は`root`の意味になる。
+
+## workdir
+
+- `WORKDIR`はディレクトリも作成する
+    - <http://docs.docker.jp/engine/reference/builder.html#workdir>
