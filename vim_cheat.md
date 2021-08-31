@@ -47,3 +47,13 @@
   - 括弧変更
 - `ci("`
   - 括弧内の文字変更
+
+## 辞書追加
+
+- `zg`
+    - add as a good word
+- `zw`
+    - add as a bad word
+- `zug` / `zuw`
+    - undo `zg` or `zw`
+
