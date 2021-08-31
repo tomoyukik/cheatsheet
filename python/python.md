@@ -250,3 +250,9 @@ python setup.py develop -u
 
 flaskの組み込みサーバはスケーリングが得意でないため本番環境に向かない。
 セキュリティやパフォーマンスに影響するようだが詳細不明。
+
+## format stringについて
+
+python 2系では、`%`を使っていたが、python 3以降では`format`の使用推奨らしい。
+
+- https://realpython.com/python-formatted-output/
