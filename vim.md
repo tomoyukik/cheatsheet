@@ -57,3 +57,6 @@
 - `zug` / `zuw`
     - undo `zg` or `zw`
 
+## space to tab
+
+https://stackoverflow.com/questions/9104706/how-can-i-convert-spaces-to-tabs-in-vim-or-linux
