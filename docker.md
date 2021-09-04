@@ -86,3 +86,21 @@ root/
 
 - `WORKDIR`はディレクトリも作成する
     - <http://docs.docker.jp/engine/reference/builder.html#workdir>
+
+## 証明書に関して
+
+- <https://docs.docker.com/engine/security/certificates/>
+
+dockerでは、dockerでのみ使用したい証明書を`/etc/docker/certs.d/`以下のレジストリのホスト名と同名のディレクトリを作成し、配置することで使用できる。
+linuxでは任意のCAはシステムデフォルトとマージされる。
+windowsでは、システムデフォルトの証明書はカスタムルートCAが設定されていない場合のみ使用される。
+
+つまり、Linuxの場合、OSと共通で使用したい証明書はOSの設定で問題なく、
+dockerのみで使用したいイメージがあった場合はカスタムが必要になる、と理解した
+レジストリからのイメージのpullを前提に話をしているが、docker image以外のパッケージとかをイメージ中でインストールしたい場合の証明書も同じなんだろうか。
+
+- <https://knqyf263.hatenablog.com/entry/2019/11/29/052818>
+    - `curl`でdocker pullできるみたいだからcurlではできるのにdocker pullではできないみたいに検証に使えそう
+
+- <https://taktak.jp/2019/11/30/4211/>
+
