@@ -1,70 +1,215 @@
-R cheatsheet-
+# R cheatsheet
 
-一部機能にX11のインストールが必要
+※ 一部機能にX11のインストールが必要
+<!-- X11が何かがわからない。 -->
 
-### console起動
+## 基本操作
 
-R or r
+- console起動 <!-- いつ使うものかがわからない。コンソールが何を指してるのかわからない。 -->
+    - `R` or `r`
+- `summary()`
+    - `sumary(c(11, 22, 33, 44, 55))`
+- 配列
+    - `c(1, 2, 3, 4, 5)`
+- 行列
+    - `matrix(c(1, 2, 3, 4, 5, 6), 2, 3)`
+- csv読み込み
+    - `read.csv("abc.csv")`
+- 関数定義
+    ```r
+    func <- fucntion(x) {
+      var(x) * length((x) - 1) / length(x)
+    }
+    ```
+- Rファイル読み込み (インポート)
+    - `source("Rfiele.R")`
+- packageのinstall/読み込み
+    - `install.packages("package")`
+    - `library(package)`
 
-### summary()
+## 統計関連　
 
-  sumary(c(11, 22, 33, 44, 55))
+- 度数分布
+    ```r
+    > a = c("A", "B", "C", "D" , "A", "C", "A")
+    > table(a)
+    a
+    A B C D
+    3 1 2 1
+    ```
+- histgram
+    ```r
+    > b = c(1, 1, 5, 5, 5, 5, 7)
+    > hist(b)
+    ```
+- 基本統計量
+    - `mean(x)`
+    - `median(x)`
+    - `var(x)`
+        - 不偏分散
+    - `var(x) * (length(x) - 1) / length(x)`
+        - 標本分散
+    - `sd(x)`
 
-### 配列
+## データ操作
 
-  c(1, 2, 3, 4, 5)
+### UNION
 
-### 行列
-  matrix(c(1, 2, 3, 4, 5, 6), 2, 3)
+- `bind_row`
+    `rbind`では列数が同一という制限があるので、`bind_row`の方が認識と近い
+    ```r
+    bind_row(df1, df2)
+    ```
 
-### csv読み込み
+### excel読み込み
 
-  read.csv("abc.csv")
+- `openxlsx`
+    ```R
+    openxlsx::read.xlsx('file.xslx', sheet = 1)
+    openxlsx::read.xlsx('file.xslx', sheet = 'sheet1')
+    ```
+- `read_excel`
+    `openxlsx`だと漢字の後に変なカタカナがついてくるときに使える
+    戻り値は`tibble`
+    ```R
+    readxl::read_excel('file.xlsx', sheet = 1)
+    readxl::read_excel('file.xlsx', sheet = 'sheet1')
+    ```
 
-### 関数定義
+### dplyerのカラム名指定に文字列を使用する
 
-func <- fucntion(x) {
-  var(x) * length((x) - 1) / length(x)
-}
+`!!`と`:=`でメタプログラミング
 
-### Rファイル読み込み
+```R
+colname = 'column_name_string'
+colname_sym = rlang::sym(colname) # rlang::sym
+df %>%
+  mutate(
+    !!colname := !!colname_sym # 代入される側は!!文字列、代入する側は!!シンボル、=の代わりに:=
+  )
+```
 
-source("Rfiele.R")
+参考: [文字列で列名を指定してmutate ＆ aesを文字列で指定して繰り返しggplot](https://qiita.com/ocean_f/items/d1ceba28cc714936e640)
 
-### package install/読み込み
 
-install.packages("package")
-library(package)
+### ベクトライズされてない関数を`dplyr`で使う
 
-### 度数分布
+`pmap`を使う。`pmap`の戻り値は`list`なので`unnest`で`list`解消。
 
-> a = c("A", "B", "C", "D" , "A", "C", "A")
-> table(a)
-a
-A B C D
-3 1 2 1
+```R
+df %>%
+  mutate(
+    col = pmap(list(arg), ~ func(.))
+  ) %>%
+  unnest(col)
+```
 
-### histgram
+参考: [`dplyr::mutate`内でベクトル化されていない関数を使う](http://yoshidk6.hatenablog.com/entry/2018/08/06/154117A)
 
-> b = c(1, 1, 5, 5, 5, 5, 7)
-> hist(b)
+### mutateで変更するカラム名を`starts_with`で指定する
 
-### 平均
+```R
+df %>%
+  mutate_at(
+    vars(starts_with('prefix_')), . == 'abc' # `.`は`vars(starts_with('prefix_'))`で得られるカラム
+  )
+```
 
-mean(x)
+### 欠損値の置き換え
 
-### 中央値
+- 特定の値で置き換え
+    ```R
+    df %>%
+      mutate(
+        col = replace_na(col, 0)
+      )
+    ```
+- 別の列の値で置き換え
+    ```R
+    df %>%
+      mutate(
+        col = ifelse(is.na(col), another_col, col)
+      )
+    ```
 
-median(x)
+## 日付操作
 
-### 不偏分散
+### 日付の文字列をDateオブジェクトに変換する
 
-var(x)
+- `withr::with_locale`
+    ```R
+    # 日本語
+    strptime("1月 1, 2021, 9:00 午前", format = "%B %d, %Y, %I:%M %p")
 
-### 標本分散
+    # 英語
+    withr::with_locale(
+      new = c("LC_TIME" = "C"),
+      strptime("January 1, 2021, 9:00 am UTC", format = "%B %d, %Y, %I:%M %p UTC", tz = "UTC")
+    )
+    ```
+    Rではロケールに依存するので`with_locale`でロケールを合わせる必要がある。
+    タイムゾーン`"%Z"`は`strptime`ではサポートされてない。
+    - 参考
+        - <https://www.366service.com/jp/qa/5e202ba289cb909aa2158444e8bb4d64>
+        - <https://qiita.com/nozma/items/4aea36022ce18a6aa5ca>
+        - <https://www.javadrive.jp/ruby/date_class/index5.html>
 
-var(x) * (length(x) - 1) / length(x)
+### `JST`のタイムゾーンで時刻を読みこむ
 
-### 標準偏差
+- `tz = 'Japan'`を設定。
+    ```R
+    strptime("1月 1, 2021, 9:00 午前", format = "%B %d, %Y, %I:%M %p", tz = "Japan")
+    ```
 
-sd(xn
+
+### ロケールについて
+
+- <https://qiita.com/nozma/items/4aea36022ce18a6aa5ca>
+- <https://www.rdocumentation.org/packages/withr/versions/2.3.0/topics/with_locale>
+
+```R
+# NOT RUN {
+## Change locale for time:
+df <- data.frame(
+  stringsAsFactors = FALSE,
+  date = as.Date(c("2019-01-01", "2019-02-01")),
+  value = c(1, 2)
+)
+with_locale(new = c("LC_TIME" = "es_ES"), code = plot(df$date, df$value))
+## Compare with:
+#  plot(df$date, df$value)
+
+## Month names:
+with_locale(new = c("LC_TIME" = "en_GB"), format(ISOdate(2000, 1:12, 1), "%B"))
+with_locale(new = c("LC_TIME" = "es_ES"), format(ISOdate(2000, 1:12, 1), "%B"))
+
+## Change locale for currencies:
+with_locale(new = c("LC_MONETARY" = "it_IT"), Sys.localeconv())
+with_locale(new = c("LC_MONETARY" = "en_US"), Sys.localeconv())
+
+## Ordering:
+x <- c("bernard", "b<U+00E9>r<U+00E9>nice", "b<U+00E9>atrice", "boris")
+with_locale(c(LC_COLLATE = "fr_FR"), sort(x))
+with_locale(c(LC_COLLATE = "C"), sort(x))
+
+# }
+```
+
+## 文字操作
+
+### 全角半角の変換
+
+全角アルファベットは半角に、半角カタカナは全角に変換。
+<https://pediatricsurgery.hatenadiary.jp/entry/2017/10/12/105242>
+
+```R
+stringi::stri_trans_nfkc('string')
+```
+
+## その他
+
+### Rのラムダ式
+
+```R
+~ func(.)
+```
