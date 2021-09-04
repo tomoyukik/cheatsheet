@@ -37,7 +37,7 @@ the inconvenience!
 cd -
 ```
 
-### treekの階層指定
+### `tree`の階層指定
 
 ```
 tree -L 3
@@ -45,38 +45,40 @@ tree -L 3
 
 ### ディレクトリ構造図の記号の変換
 
-- ┴とか
+- `┴`とか
 - 「けいせん」を変換すればでる
 
 ### インストール済アプリケーション表示
 
-```
+```sh
 apt list --installed
 ```
 
-```
+```sh
 dpkg -l
 ```
 
 ### osのバージョン確認
 
-```
+```sh
 cat /etc/issue
 ```
 
 ### コマンドの結果を変数に格納
 
-```
+```sh
 hensu=$(date '+%D')
 ```
 
-### mac上のアプリの情報取得
+### Mac上のアプリの情報取得
 
-```
+```sh
 /System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/LaunchServices.framework/Versions/A/Support/lsregister -dump | grep -i "google chrome"
 ```
 
-### SSHでポート指定する
+### `SSH`
+
+#### ポート指定する
 
 ```
 ssh -p 22 root@localhost
@@ -84,11 +86,26 @@ ssh -p 22 root@localhost
 
 `ssh root@localhost:22`ではないので注意
 
+#### リンクローカルアドレスで`ssh`
+
+```sh
+ssh user@リンクローカルアドレス%ゾーンインデックス
+```
+
+#### ポートフォワーディング
+
+`-L`/`-R`オプションを使う
+
+#### 多段階ポートフォワーディング
+
+`-w`オプションを使う
+
 ### 正規表現でファイル一括rename
 
-以下でコマンド確認
+`0`埋めの例
 
-```
+以下でコマンド確認 (まだ実行はしない)
+```sh
 ls | sed -n 's/\([0-9]\)\(.*\)/mv \0 00\1\2/p'
 ```
 
@@ -96,7 +113,7 @@ ls | sed -n 's/\([0-9]\)\(.*\)/mv \0 00\1\2/p'
 - `\1`は1つ目の括弧の数字一文字 (`\([0-9]\)`)
 - `\2`は2つ目の括弧の0個以上の任意の文字列 (`\(.*\)`)
 
-問題なければbashに渡す
+問題なければ`bash`に渡す
 
 ```
 ls | sed -n 's/\([0-9]\)\(.*\)/mv \0 00\1\2/p' | bash
@@ -104,27 +121,33 @@ ls | sed -n 's/\([0-9]\)\(.*\)/mv \0 00\1\2/p' | bash
 
 ### shellの関数定義
 
-```
+```sh
 function pipinstall() {
     pip install $1 -i proxy
 }
 ```
 
-```
+### 特定ホストでのみ実行する時
+
+`$HOME`を複数サーバでディレクトリ共有(mount?)している状況を想定
+
+```sh
 if ["${HOSTNAME}" = "hostname"]; then
     some action
 fi
 ```
 
-### chromeのaliasを設定
+### chrome
 
-```
+#### `alias`を設定
+
+```sh
 alias chrome="'/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome'"
 ```
 
-バージョン確認
+#### バージョン確認
 
-```
+```sh
 chrome --version
 ```
 

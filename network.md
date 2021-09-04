@@ -4,14 +4,12 @@
 
 `-v`オプションをつける
 
-```
+```sh
 ssh pi@judy.local -v
 ```
 
 ### ip addr結果見方
 
-
-例
 ```sh
 pi@judy:~ $ ip a
 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
@@ -36,25 +34,24 @@ pi@judy:~ $ ip a
        valid_lft forever preferred_lft forever
 ```
 
-- lo: ループバックアドレス
-- eth0: 有線LANのip
-- wlan0: 無線LANのip
-
-- mtu
-    - maximum transmission unit
-- qdisc
-- state
-- group
-- qlen
+|  | 意味 |
+| -- | -- |
+| `lo` | ループバックアドレス |
+| `eth0` | 有線LANのip |
+| `wlan0` | 無線LANのip |
+| `mtu` |  maximum transmission unit |
+| `qdisc` | |
+| `state` | |
+| `group` | |
+| `qlen`  | |
 
 
 ### リンクローカルアドレス
 
 DHCPサーバが存在しないネットワーク内で使われる特別なIPアドレス
 自己割当IPアドレスとも呼ばれる
+リンクローカルアドレスで`ssh`をする時は以下
 
-リンクローカルアドレスでsshをする時は
-
-```
+```sh
 ssh user@リンクローカルアドレス%ゾーンインデックス
 ```
