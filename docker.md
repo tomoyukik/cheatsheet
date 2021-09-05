@@ -104,3 +104,6 @@ dockerのみで使用したいイメージがあった場合はカスタムが�
 
 - <https://taktak.jp/2019/11/30/4211/>
 
+## build環境依存の変数は`--build-arg`に定義する
+
+- <https://docs.docker.jp/engine/reference/commandline/build.html#build-arg>
