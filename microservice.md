@@ -1,5 +1,14 @@
 # マイクロサービス
 
+### マイクロサービスの特徴
+
+- 疎結合性
+- 高凝縮性
+
+疎結合性に気を取られすぎて高凝縮性を悪れがち
+
+参照: <https://syobochim.hatenablog.com/entry/2020/05/01/083200>
+
 
 ## メモ
 
@@ -37,3 +46,11 @@
 [4]: https://github.com/cncf/toc/blob/main/DEFINITION.md (Cloud Native Computingの定義)
 [5]: https://github.com/cncf/trailmap (trailmap)
 [6]: https://qiita.com/yoshii0110/items/4ae10eb071565cb90b37 (sagaパターン)
+
+
+### アーキテクチャの理解
+
+- レイヤードアーキテクチャ
+    - <https://qiita.com/yuku_t/items/961194a5443b618a4cac>
+- ヘキサゴなるアーキテクチャ・オニオンアーキテクチャ
+    - <https://qiita.com/little_hand_s/items/ebb4284afeea0e8cc752>
