@@ -1,5 +1,7 @@
 # Browser
 
+
+
 <https://nektony.com/how-to/speed-up-chrome-safari-firefox-browsers>
 
 ### safari速度改善
@@ -17,6 +19,9 @@
 > - Try to create a new Mac user profile and check how Safari works.
 
 ### chrome速度改善
+
+結局設定リセットしたら早くなった
+
 
 > - Check the memory usage of extensions. In the Chrome menu select More tools → Task Manager. You will see the browser’s Task Manager window. Here you can see a list of extensions or tabs and the memory usage of each of them. Some extensions may work incorrectly and use a significant amount of RAM.
 
