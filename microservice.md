@@ -87,34 +87,6 @@
 非正規系はクエリのパフォーマンスが上がるが、コマンドのパフォーマンスを落とす。
 ただし、これはUPDATEを想定している？INSERTしか更新系処理が走らない場合は？
 
-### センサーデータとDB
-
-- リレーショナルではなく、生データを使用した方がパフォーマンスがいい
-    - <https://blog.tinkermode.jp/entry/2019/12/09/181208>
-- TimescaledDBというのがあるらしい
-    - <https://www.infoq.com/jp/news/2019/07/timescale-multi-cloud/>
-    - InfluxDB
-        - <https://active.nikkeibp.co.jp/atcl/act/19/00005/022500414/>
-- GCPでの時系列分析アーキテクチャ
-    - <https://cloud.google.com/architecture/time-series-analysis?hl=ja>
-
-### 時系列DB
-
-- <https://zenn.dev/nakabonne/articles/d300838a1500c7>
-    - 時系列データベースを実装した記事
-- <https://fukabori.fm/episode/53>
-    - 時系列DBに関するラジオ
-- write amplication
-- gorilla
-    - データ圧縮
-    - <https://hnakamur.github.io/blog/2017/02/12/tried-facebook-gorilla-time-series-database-compression/>
-    - <http://www.vldb.org/pvldb/vol8/p1816-teller.pdf>
-    - タイムスタンプと値を分けてエンコーディング
-        - 前後の値の関係性に焦点をあてて圧縮
-        - 値はXOR/タイムスタンプは差分(delta encoding)
-        - 値はfloat -> 実際の値は小さいビット数で表せる　-> XORとの相性がいい
-    - <https://hnakamur.github.io/blog/2017/02/12/tried-facebook-gorilla-time-series-database-compression/>
-
 ### リアルタイム分析
 
 - <https://docs.microsoft.com/ja-jp/azure/architecture/solution-ideas/articles/real-time-analytics>
