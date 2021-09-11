@@ -1,5 +1,13 @@
 # cheat sheet
 
+## sed
+
+<https://sed.open-code.club/ラベル.html>
+
+## apache benchmark
+
+<https://qiita.com/flexfirm/items/ac5a2f53cfa933a37192>
+
 ## homebrew
 
 ### shallow cloneのエラー
@@ -208,4 +216,38 @@ chrome --version
 - コマンド行エディタの設定
     - `set -o vi` / `set -o emacs` で切り替えられる
 - コマンドラインエディタ・コマンド行エディタ
+- `ps`
+    - プロセス情報表示
+- `pstree`
+    - プロセス階層構造表示
+- `top`
+    - プロセスのリアルタイム表示
+- `nice`
+    - プロセスのプライオリティ変更
+- `bg` / `fg`
+    - 停止中のjobの再開
+- `jobs`
+    - ジョブの表示
+- `nohupexit`
+    - bashシェルオプション。オンにするとexitしたときに全ジョブに`SIGHUP`を送る
+- `shopt`
+    - `SIGHUP`を設定する
+- `kill` / `killall` / `pkill`
+    - シグナルを送る。終了だけではない。
+- `watch`
+    - 指定コマンドの繰り返し実行
+- `tmux` / `screen`
+    - 端末の複数作成
+-
 
+
+
+
+- `free`
+    - 使用済みメモリ・未使用メモリ・スワップ領域表示
+- `dmidecode`
+    - RAM詳細表示
+- `nproc`
+    - プロセッサ数確認
+- `lscpu`
+    - CPU詳細確認
