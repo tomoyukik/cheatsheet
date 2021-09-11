@@ -31,3 +31,69 @@
 - gitops style
     - <https://cloud.google.com/kubernetes-engine/docs/tutorials/gitops-cloud-build>
     - CDパイプラインの図とチュートリアル
+
+
+## storage service
+
+### cloud storage
+
+- htmlファイルをおけば簡易的ウェブサーバのようにもなる
+    - ACL (アクセス制御リスト) でファイル単位のアクセス制限可能
+- バケット単位でストレージクラスを設定
+    - ストレージクラスは変更可能
+        - standard
+        - nearline
+        - coldline
+        - archive
+- 期間をトリガーにした操作なども可能
+    - ストレージクラスの変更やオブジェクトの削除など
+- bucket名にはドメイン名(`.`付き)を使えるが、ドメインに対する所有権の証明が必要
+- 署名付きURL
+    - ユーザ認証なしでアクセス可能
+- 鍵を使った暗号化できるが、なくすとデータ取り出せなくなる場合も
+- 差分管理ではない
+- VMディレクトリとの同期
+- マルチリージョンではリージョン選択をできないので、企業などの制約ある場合は使えない
+
+## メモ
+
+- cloud shell
+    - 5G永続ストレージ
+- ゾーンはまとめて落ちる範囲
+- 耐障害性を高めるならマルチリージョン
+
+### ネットワーク
+
+- VPC networkはアドレス範囲なし (private address)
+    - 全リージョンにまたがる
+- 1PJ以下に最大5つのVPCネットワーク定義可能
+- VPCネットワーク内にはサブネットワーク定義可能
+    - サブネットワークはリージョンを跨げない
+- FWはVPCネットワーク単位
+    - 同じVPC内のインスタンス同士でもFWを通過する
+- VMの名前解決は同一VPCネットワーク内のみ可能
+- VM内で`ifconfig`で確認できるのは内部IPのみ
+    - 外部IPはメタデータから確認する
+- cloudDNS -> googleのDNSサービス
+- VMにはprimary以外のIPを設定可能
+    - エイリアスIP範囲を使うとコンテナごとにIPを設定可能
+- サブネットにも複数のアドレス範囲を割り振れる
+
+### cloud sql
+
+cloud sqlのインスタンスは次プロジェクト内ではなく、
+サービス提供ベンダーのプロジェクト内に追加される
+
+
+### GCP gaibu adress get
+curl -H "Metadata-Flavor: Google" http://169.254.169.254/computeMetadata/v1/instance/network-interfaces/0/access-configs/0/external-ip && echo
+
+## firewallのアドレス取得
+
+```sh
+cloud compute firewall-rules describe allow-ssh | \
+        sed "/^sourceRanges:/,/^\[^-\s\].*/ ! d; {/^-/ ! d; s/^-\s\+//; s/$/,/}" | \
+        sed -z "s/\n//g; s/,$//" | \
+        xargs -i echo "{},`dig +short myip.opendns.com @resolver1.opendns.com`/32" | \
+        xargs -i gcloud compute firewall-rules update allow-ssh --source-ranges={}
+```
