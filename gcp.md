@@ -1,6 +1,6 @@
 # GCP cheat sheet
 
-## BigQueryに時系列データを取り込んでリアルタイム分析
+# BigQueryに時系列データを取り込んでリアルタイム分析
 
 - パーティショニングテーブルを用いることでコスト削減ができる
     - https://cloud.google.com/bigquery/docs/querying-partitioned-tables?hl=ja
