@@ -97,3 +97,20 @@ cloud compute firewall-rules describe allow-ssh | \
         xargs -i echo "{},`dig +short myip.opendns.com @resolver1.opendns.com`/32" | \
         xargs -i gcloud compute firewall-rules update allow-ssh --source-ranges={}
 ```
+
+## AutoML
+
+<https://cloud.google.com/automl>
+
+- vertex API
+    - <https://cloud.google.com/vertex-ai/docs>
+- AutoML Vision
+    - <https://cloud.google.com/vision/overview/docs#automl-vision>
+- AutoML Video Intelligence (beta)
+    - <https://cloud.google.com/video-intelligence/automl/docs>
+    - AutoML Video Intelligence Classification
+    - AutoML Video Intelligence Object Tracking
+- AutoML Tables
+    - <https://cloud.google.com/automl-tables/docs>
+    - online analysis
+        - <https://cloud.google.com/automl-tables/docs/predict>
