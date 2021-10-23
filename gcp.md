@@ -92,7 +92,7 @@ curl -H "Metadata-Flavor: Google" http://169.254.169.254/computeMetadata/v1/inst
 
 ```sh
 cloud compute firewall-rules describe allow-ssh | \
-        sed "/^sourceRanges:/,/^\[^-\s\].*/ ! d; {/^-/ ! d; s/^-\s\+//; s/$/,/}" | \
+        sed "/^sourceRanges:/,/^[^-\s].*/ ! d; {/^-/ ! d; s/^-\s\+//; s/$/,/}" | \
         sed -z "s/\n//g; s/,$//" | \
         xargs -i echo "{},`dig +short myip.opendns.com @resolver1.opendns.com`/32" | \
         xargs -i gcloud compute firewall-rules update allow-ssh --source-ranges={}
