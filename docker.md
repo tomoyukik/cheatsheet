@@ -1,25 +1,24 @@
 # Docker Cheat
 
-## volumeするときにcontainerの中身をlocalにvolumeする方法
+## volume先のパス指定
 
-volumeを宣言するとき、ディレクトリじゃなくてvolumeで宣言する
+volume先のディレクトリは絶対パスでないとうまくいかなかった。
 
 ```
+services:
+  service1:
     volumes:
-      - conf:/etc/httpd/conf.d
-```
+      - type: volume
+        source: modules
+        target: /usr/local/lib/python3.7/site-packages
 
-localにvolumeと同名のディレクトリを作成する
-```
-mkdir conf
-```
-
-containerを起動すると中身ができてる
-
-以下の宣言方法だと、ローカルのディレクトリでコンテナのディレクトリを上書きする
-```
 volumes:
-  - ./conf:/etc/httpd/conf.d
+  modules:
+    driver_opts:
+      type: none
+      device: /path/to/direcotry
+      o: bind
+
 ```
 
 ## windowsでのdocker
