@@ -1,5 +1,15 @@
 # cheat sheet
 
+## loop
+
+`seq`が使える
+
+```sh
+for i in $(seq -f '%03d' 1 10); do
+    echo ${i}
+done
+```
+
 ## sed
 
 <https://sed.open-code.club/ラベル.html>
