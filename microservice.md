@@ -90,3 +90,32 @@
 ### リアルタイム分析
 
 - <https://docs.microsoft.com/ja-jp/azure/architecture/solution-ideas/articles/real-time-analytics>
+
+
+
+
+
+## マイクロサービス事例
+
+- 負荷試験
+    - 負荷に対してサーバ台数や費用が銅像化する
+        - 非線形であればボトルネックの可能性
+- publichのエンドポインt != subscribeのエンドポイントだと料金
+- GDPR
+- bigquery
+    - json extract関数がある
+- cloud pub/sub
+    - エージェントから直で送ると送信元の負荷が高くなりラウンドトリップがかかる
+    - 間にAPpEngineを加えて簡単な認証により回避
+
+
+- サービスメッシュアーキテクチャ
+    -
+
+- fallacies of distributed computing
+
+
+
+gcloud compute --project=august-gantry-325007 firewall-rules create allow-ssh --direction=INGRESS --priority=1000 --network=default --action=ALLOW --rules=tcp:22 --source-ranges=10.0.0.0/32 --enable-logging
+gcloud compute --project=august-gantry-325007 firewall-rules describe
+
