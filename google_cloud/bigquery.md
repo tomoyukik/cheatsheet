@@ -1,5 +1,47 @@
 # BigQuery Cheat Sheet
 
+## [役割とBigQueryのリソース](https://cloud.google.com/bigquery/docs/introduction#bigquery-roles-and-resources)
+
+### データ管理者
+
+#### Reservationsでの費用管理
+
+Reservationsではオンデマンド料金と定額料金の切り替えができる。
+
+#### [データセキュリティとデータガバナンス](https://cloud.google.com/bigquery/docs/data-governance
+
+データガバナンスは、データの取得・使用・廃棄のライフサイクルにわたって、データ管理の原則に則ったアプローチ。
+
+データガバナンスの3要素。
+
+- データポリシーの定義・同意と施行のためのフレームワーク
+- オンプレ・クラウド・DWHプラットフォーム、全データアセットの制御・監視・管理運営のプロセス
+- データポリシーのコンプライアンスを監督・管理する適切なツール・技術
+
+- [Data Governance Across the Data Lake Reference Architecture](https://www.gartner.com/en/documents/3872170/applying-effective-data-governance-to-secure-your-data-l) by gartner
+- white paper [クラウドのデータ ガバナンスの原則とベスト プラクティス](https://services.google.com/fh/files/misc/principles_best_practices_for_data-governance.pdf)
+
+
+#### スナップショットでのデータバックアップ
+
+#### `INFORMATION_SCHEMA`でのメタデータの把握
+
+#### ジョブの実行
+
+#### ログとリソースのモニタリング
+
+### データサイエンティスト
+
+### データデベロッパー
+
+## GitHubで管理されたデータマート構築基盤の紹介
+
+<https://techblog.zozo.com/entry/datamart_on_github>
+
+## best practice
+
+<https://cloud.google.com/bigquery/docs/best-practices-performance-overview>
+
 ## クエリ結果書き込み
 
 クエリ結果をcsvダウンロードするにはコンソールが必要
