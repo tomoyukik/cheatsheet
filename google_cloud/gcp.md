@@ -116,3 +116,20 @@ cloud compute firewall-rules describe allow-ssh | \
     - <https://cloud.google.com/automl-tables/docs>
     - online analysis
         - <https://cloud.google.com/automl-tables/docs/predict>
+
+
+## VMの自動停止
+
+- VM自動停止
+  - <https://cloud.google.com/blog/ja/products/compute/guide-to-cost-optimization-through-automated-vm-management>
+  - <https://cloud.google.com/compute/docs/instances/stop-start-instance?hl=ja>
+  - <https://cloud.google.com/blog/products/storage-data-transfer/save-money-by-stopping-and-starting-compute-engine-instances-on-schedule>
+  - <https://cloud.google.com/compute/docs/shutdownscript?hl=ja>
+- VMインスタンス推奨サイズ適用
+  - <https://cloud.google.com/compute/docs/instances/apply-sizing-recommendations-for-instances>
+
+## DataFlow
+
+- ジョブ費用管理
+  - <https://cloud.google.com/blog/ja/products/data-analytics/predicting-cost-dataflow-job>
+  - <https://cloud.google.com/dataflow/docs/guides/using-custom-containers>
