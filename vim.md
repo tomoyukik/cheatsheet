@@ -1,4 +1,4 @@
-#vim #cheatsheet #wip 
+#vim #cheatsheet
 # Vim cheatsheet
 
 ## 範囲指定の置換
