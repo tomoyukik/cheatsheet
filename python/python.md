@@ -1,3 +1,4 @@
+#python #cheatsheet
 # Python cheat sheet
 
 ### 日付カラム読み込み
@@ -14,7 +15,7 @@ pd.read_csv(
 
 ### 全角半角の変換
 
-https://qiita.com/YuukiMiyoshi/items/6ce77bf402a29a99f1bf
+<https://qiita.com/YuukiMiyoshi/items/6ce77bf402a29a99f1bf>
 
 ```python
 text = "！＂＃＄％＆＇（）＊＋，－．／０１２３４５６７８９：；＜＝＞？＠ＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸＹＺ［＼］＾＿｀>？＠ａｂｃｄｅｆｇｈｉｊｋｌｍｎｏｐｑｒｓｔｕｖｗｘｙｚ｛｜｝～"
@@ -25,14 +26,14 @@ text.translate(str.maketrans({chr(0xFF01 + i): chr(0x0021 + i) for i in range(94
 text.translate(str.maketrans({chr(0x0021 + i): chr(0xFF01 + i) for i in range(94)}))
 ```
 
-### VSCODEでJupyter環境を実現する
+### VSCodeでJupyter環境を実現する
 
-参考: [VS Code でPython，Jupyter を動かす](HTtps://qiita.com/surei/items/9f25d7efa7c67d55d98f)
+参考: [VS Code でPython，Jupyter を動かす](https://qiita.com/surei/items/9f25d7efa7c67d55d98f)
 
 VSCodeのpython拡張をインストールして、`# %%`を打ち込むとセルを区切ってJupyter的な環境が実現できる。
 
 
-### pandas::queryの列名に空白含むとき
+### `pandas::query`の列名に空白含むとき
 
 ```python
 df.query("`column with space` == 1")
@@ -110,14 +111,14 @@ for i in range(until):
 ```
 みたいな形にして、2次元目についてスライスすればいい。
 
-## VSCodeのdetect kernel connection broken エラー
+## VSCodeの`detect kernel connection broken` エラー
 
 consoleで実行したら`terminated by signal SIGSEGV (Address boundary error)`が出てきた
-timestampを含むnumpy.arrayをtorch.tensorに変更しようとしてたのが原因ぽい
+timestampを含む`numpy.array`を`torch.tensor`に変更しようとしてたのが原因ぽい
 
-SIGSEGVは不正メモリアクセスらしい
+`SIGSEGV`は不正メモリアクセスらしい
 
-torch.Tensorじゃなくtorch.tensor使うと起きる場合があるかも
+`torch.Tensor`じゃなく`torch.tensor`使うと起きる場合があるかも
 
 ## pythonのcpの対応バージョンを調べる
 
@@ -130,7 +131,7 @@ torch.Tensorじゃなくtorch.tensor使うと起きる場合があるかも
 
 https://docs.python.org/ja/3/library/inspect.html
 
-```
+```python
 import inspect
 import os
 
@@ -141,7 +142,7 @@ print(inspect.getsource(os.path.abspath))
 
 `np.where`を使う
 
-```
+```python
 one_hot_columns = ['value1', 'value2', 'value3', 'value4']
 df['value'] = pd.Series(
     df.columns[np.where(df[one_hot_columns] == 1)[1]]
@@ -150,7 +151,7 @@ df['value'] = pd.Series(
 
 ## 文字列からpythonオブジェクトにparse
 
-```
+```python
 import ast
 str_obj = "[{'a': 'apple', 'b': 'bible'}, {'a': 'ant', 'b': 'bee'}]"
 ast.literal_eval(str_obj)
@@ -162,7 +163,7 @@ ast.literal_eval(str_obj)
 pdfrwとreportlabの両方が必要
 reportlabのみでは既存のpdfに書き込みできない
 
-```
+```python
 from pdfrw.buildxobj import pagexobj
 from pdfrw.toreportlab import makerl
 from reportlab.pdfgen import canvas
@@ -191,7 +192,7 @@ cvs.save()
 
 http://lightgauge.net/language/python/8582/
 
-```
+```sh
 package_root/
  ├─ setup.py
  ├─ module1/
@@ -201,7 +202,7 @@ package_root/
  └─ module2/
 ```
 
-```setup.py
+```python:setup.py
 from setuptools import setup, find_packages
 
 setup(
@@ -218,7 +219,7 @@ setup(
 )
 ```
 
-```__init__.py
+```python:__init__.py
 from .module1 import Class1
 from .module2 import Class2
 
@@ -227,32 +228,41 @@ __all__ = ['Class1', 'Class2'] # class名列挙
 
 ### インストール
 
-```
+```sh
 python setup.py develop
 ```
 
 ### アンインストール
 
-```
+```sh
 python setup.py develop -u
 ```
 
-### flaskのアプリケーションサーバについて
+### Flaskのアプリケーションサーバについて
 
-- https://msiz07-flask-docs-ja.readthedocs.io/ja/latest/deploying/index.html
-- https://flask.palletsprojects.com/en/2.0.x/deploying/
-- https://medium.com/finatext/flask-life-to-understand-from-zero-re-9bf283ee5fae
+- <https://msiz07-flask-docs-ja.readthedocs.io/ja/latest/deploying/index.html>
+- <https://flask.palletsprojects.com/en/2.0.x/deploying/>
+- <https://medium.com/finatext/flask-life-to-understand-from-zero-re-9bf283ee5fae>
 
 - werkzeug (ヴェルクツォイク)
   - flaskがデフォルトで提供する簡易的なアプリケーションサーバ？
 - wsgi (ウィスギー)
   - インターフェース
 
-flaskの組み込みサーバはスケーリングが得意でないため本番環境に向かない。
+Flaskの組み込みサーバはスケーリングが得意でないため本番環境に向かない。
 セキュリティやパフォーマンスに影響するようだが詳細不明。
 
 ## format stringについて
 
 python 2系では、`%`を使っていたが、python 3以降では`format`の使用推奨らしい。
 
-- https://realpython.com/python-formatted-output/
+- <https://realpython.com/python-formatted-output/>
+
+## kaggleでplotlyがerror
+
+<https://www.kaggle.com/product-feedback/186513#1025809>
+
+```py
+from plotly.offline import init_notebook_mode
+init_notebook_mode(connected=True)
+```
