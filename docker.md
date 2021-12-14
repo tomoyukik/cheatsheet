@@ -1,10 +1,11 @@
-# Docker Cheat
+#docker #cheatsheet 
+# Docker cheat sheet
 
 ## volume先のパス指定
 
 volume先のディレクトリは絶対パスでないとうまくいかなかった。
 
-```
+```yaml
 services:
   service1:
     volumes:
@@ -26,15 +27,15 @@ volumes:
 - wsl2使わない場合、インストール時点で有効化しない様に気をつける
   - 有効かした場合は、docker desktopの設定から無効化できる
 - 権限が制限されてるときは、管理者権限でdockerusersグループに操作ユーザを追加しないと使えない
-- volumeを使うときはdocker desctopの設定から共有するディレクトリを設定しないとエラーが出る
+- volumeを使うときはdocker desktopの設定から共有するディレクトリを設定しないとエラーが出る
 
 ## docker-composeのvolumeの書き方
 
-- https://zenn.dev/sarisia/articles/0c1db052d09921
+- <https://zenn.dev/sarisia/articles/0c1db052d09921>
 
 long syntax
 
-```
+```yaml
     volumes:
       - type: bind
         source: "./config"
@@ -63,7 +64,7 @@ build:
 
 ### fishでdocker container一括削除
 
-```
+```sh
 docker rm (docker ps -a -q)
 ```
 

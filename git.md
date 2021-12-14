@@ -1,3 +1,4 @@
+#git #cheatsheet 
 # git cheat sheet
 
 ## ローカルにベアリポジトリを作成する

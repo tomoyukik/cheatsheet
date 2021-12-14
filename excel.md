@@ -1,3 +1,4 @@
+#excel #cheatsheet 
 # Excel cheat sheet
 
 ### アプリケーションキー
