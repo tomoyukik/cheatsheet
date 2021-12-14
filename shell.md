@@ -1,4 +1,5 @@
-# cheat sheet
+#shell #cheatsheet 
+# shell cheat sheet
 
 ## loop
 
@@ -98,7 +99,7 @@ hensu=$(date '+%D')
 
 #### ポート指定する
 
-```
+```sh
 ssh -p 22 root@localhost
 ```
 
@@ -133,7 +134,7 @@ ls | sed -n 's/\([0-9]\)\(.*\)/mv \0 00\1\2/p'
 
 問題なければ`bash`に渡す
 
-```
+```sh
 ls | sed -n 's/\([0-9]\)\(.*\)/mv \0 00\1\2/p' | bash
 ```
 
@@ -248,11 +249,6 @@ chrome --version
     - 指定コマンドの繰り返し実行
 - `tmux` / `screen`
     - 端末の複数作成
--
-
-
-
-
 - `free`
     - 使用済みメモリ・未使用メモリ・スワップ領域表示
 - `dmidecode`
