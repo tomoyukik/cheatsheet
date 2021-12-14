@@ -1,4 +1,5 @@
-# R cheatsheet
+#R #rlang #cheatsheet 
+# R cheat sheet
 
 ※ 一部機能にX11のインストールが必要
 <!-- X11が何かがわからない。 -->
@@ -68,7 +69,7 @@ A B C D
 3 1 2 1
 ```
 
-#### histgram
+#### ヒストグラム
 
 #### `hist`
 
