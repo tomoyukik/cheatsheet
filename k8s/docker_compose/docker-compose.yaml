@@ -1,0 +1,44 @@
+version: '3'
+services:
+  nginx:
+    image: nginx
+    restart: always
+    environment:
+      TZ: Asia/Tokyo
+    # build: ./nginx
+    volumes:
+      - type: bind
+        source: "./nginx/config/default.conf"
+        target: "/etc/nginx/conf.d/default.conf"
+    hostname: nginx
+    ports:
+      - "8880:80"
+  redmine:
+    image: redmine
+    restart: always
+    volumes:
+      - type: bind
+        source: "./redmine/files"
+        target: "/usr/src/redmine/files"
+      - type: bind
+        source: "./redmine/plugins"
+        target: "/usr/src/redmine/plugins"
+      - type: bind
+        source: "./redmine/public/themes"
+        target: "/usr/src/redmine/public/themes"
+    environment:
+      REDMINE_DB_POSTGRES: db
+      REDMINE_DB_PASSWORD: password
+      REDMINE_DB_ENCODING: utf8
+      REDMINE_DB_PORT: 5432
+    ports:
+      - "3000:3000"
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: password
+    volumes:
+      - type: bind
+        source: "./postgres/data"
+        target: "/var/lib/postgresql/data"
