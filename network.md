@@ -55,3 +55,17 @@ DHCPサーバが存在しないネットワーク内で使われる特別なIP�
 ```sh
 ssh user@リンクローカルアドレス%ゾーンインデックス
 ```
+
+## mDNS
+
+- mDNS (multicast DNS)
+  - RFC6762
+  - Apple の Bonjour、OSS の Avahi に実装されている
+  - ローカルネットワーク内でホスト名からIPアドレスを割り出すプロトコル
+  - DNS問い合わせをIPマルチキャストで同報送信する (UDP)
+- Bonjour
+- Avahi
+
+- `dscacheutil`
+  - mDNSで名前解決してる場合、`nslookup`は使えない
+  - `dscaheutil -q host -a name some.host.name.local`
